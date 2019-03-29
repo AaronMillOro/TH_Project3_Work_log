@@ -4,13 +4,13 @@ This terminal application is part of the **Treehouse Python Techdegree**. The sc
 * The script catch exceptions and report errors to the user.
 * The user is is prompted with a main menu to choose whether to add a new entry or search previous entries.
 * By choosing to enter a new work log, the user can provide:
- * The task name and date time
- * A number of minutes spent working on it
- * Additional notes can be recorded.
+    * The task name and date time
+    * A number of minutes spent working on it
+    * Additional notes can be recorded.
 * By choosing to find a previous entry, the user can select to find by:
- * **Exact date** 
- * **Time spent** on the task
- * **Keyword** to be find in task names or notes
- * **Regex** pattern present in task names or notes
+    * **Exact date** 
+    * **Time spent** on the task
+    * **Keyword** to be find in task names or notes
+    * **Regex** pattern present in task names or notes
 * When displaying the entries, the entries should be displayed in a readable format with the date, task name, time spent, and notes information.
 * Basic coding style complies with PEP 8
