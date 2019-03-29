@@ -10,7 +10,7 @@ This terminal application is part of the **Treehouse Python Techdegree**. The sc
 * By choosing to find a previous entry, the user can select to find by:
     * **Exact date** 
     * **Time spent** on the task
-    * **Keyword** to be find in task names or notes
+    * **Keyword** to be found in task names or notes
     * **Regex** pattern present in task names or notes
-* When displaying the entries, the entries should be displayed in a readable format with the date, task name, time spent, and notes information.
+* When displaying the entries, the entries are displayed in a readable format with the date, task name, time spent, and notes information.
 * Basic coding style complies with PEP 8
