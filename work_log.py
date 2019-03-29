@@ -23,8 +23,10 @@ def main_menu():
         choice = input(MAIN_MENU)
         Clean()
         if choice.lower() == "a":
-            test = Task()
-            test.show_task()
+            item = Task()
+            item.show_task()
+            item.in_out_task()
+
 
         elif choice.lower() == "b":
             MenuSearch()
