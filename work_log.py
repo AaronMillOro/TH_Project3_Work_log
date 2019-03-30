@@ -26,8 +26,6 @@ def main_menu():
             item = Task()
             item.show_task()
             item.in_out_task()
-
-
         elif choice.lower() == "b":
             MenuSearch()
             #print("search ADD item")
@@ -35,7 +33,7 @@ def main_menu():
             print("See you next time!")
             break
         else:
-            print("'{}' is an invalid option! Please try again".format(choice))
+            print("'{}' invalid option! Please try again".format(choice))
 
 
 if __name__ == "__main__":
