@@ -14,6 +14,7 @@ This terminal application is part of the **Treehouse Python Techdegree**. The sc
 * When displaying the entries, the entries are displayed in a readable format with the date, task name, time spent, and notes information.
 * Basic coding style complies with PEP 8.
 * The script catch exceptions and report errors to the user.
+
 To run the application type:
 ```python
 python3 work_log.py
