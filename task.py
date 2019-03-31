@@ -2,6 +2,7 @@ import csv
 import datetime
 import os
 
+
 from tools import Clean
 
 
@@ -36,9 +37,13 @@ class Task:
             time_minutes = input("Time spent (rounded minutes): ")
             try:
                 time_minutes = int(time_minutes)
+                if time_minutes < 0:
+                    zero_validation = time_minutes / 0
                 break
             except ValueError:
                 print("Please enter a valid number")
+            except ZeroDivisionError:
+                print("Please enter a positive number")
         self.time_minutes = time_minutes
         # input notes  freestyle
         Clean()
@@ -48,30 +53,26 @@ class Task:
         leave = input("The entry was added. Press anything to continue\n")
         Clean()
 
-    def show_task(self):
-        for key, value in self.__dict__.items():
-            print(key,":",value)
-
     def in_out_task(self):
-        # detects if previous log_file.csv is in directory
         presence_file = os.path.isfile("log_file.csv")
-        # if file is present read file to a list
+        # if previous log_file is present read file to a list
         if presence_file == True:
             csv_file = open("log_file.csv")
-            csv_file = csv.DictReader(open('log_file.csv'), delimiter="\t")
+            csv_file = csv.DictReader(open('log_file.csv'),
+            delimiter="\t")
             tasks_info = [task for task in csv_file]
             tasks_info.append(self.__dict__)
-            print(tasks_info, type(tasks_info), tasks_info[0])
             # store new information
             with open("log_file.csv", "w", encoding='utf8', newline='') as out:
-                w = csv.DictWriter(out, delimiter="\t", fieldnames=self.__dict__.keys())
+                w = csv.DictWriter(out, delimiter="\t",
+                    fieldnames=self.__dict__.keys())
                 w.writeheader()
                 for task in tasks_info:
                     w.writerow(task)
-
         # if not present create the csv file
         else:
             with open("log_file.csv", "w", encoding='utf8') as out:
-                w = csv.DictWriter(out, delimiter="\t", fieldnames=self.__dict__.keys())
+                w = csv.DictWriter(out, delimiter="\t",
+                    fieldnames=self.__dict__.keys())
                 w.writeheader()
                 w.writerow(self.__dict__)

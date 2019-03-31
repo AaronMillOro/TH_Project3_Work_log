@@ -24,11 +24,9 @@ def main_menu():
         Clean()
         if choice.lower() == "a":
             item = Task()
-            item.show_task()
             item.in_out_task()
         elif choice.lower() == "b":
             MenuSearch()
-            #print("search ADD item")
         elif choice.lower() == "c":
             print("See you next time!")
             break

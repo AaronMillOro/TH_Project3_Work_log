@@ -1,4 +1,10 @@
+import csv
+import datetime
 import os
+
+
+from search import search_date, search_time, search_string, search_regex
+
 
 MENU_SEARCH = ("""
 *******   WORK LOG   *******\n
@@ -7,7 +13,7 @@ a) Exact date
 b) Time spent
 c) Exact search
 d) Regex pattern
-e) Return tu main menu\n
+e) Return to main menu\n
 > """)
 
 
@@ -16,26 +22,41 @@ class MenuSearch:
     def __init__(self):
         while True:
             decision = input(MENU_SEARCH)
-            Clean()
-            if decision.lower() == "a":
-                print("Enter exact date to find (DD/MM/YYYY): ")
-                pass
-            elif decision.lower() == "b":
-                print("Enter exact time spent (rounded minutes): ")
-                pass
-            elif decision.lower() == "c":
-                print("Enter the keyword to search: ")
-                pass
-            elif decision.lower() == "d":
-                print("Enter a regex pattern: ")
-                pass
-            elif decision.lower() == "e":
-                break
+            presence_log = os.path.isfile("log_file.csv")
+            if presence_log == True:
+                Clean()
+                #Read file to iterate
+                task_log = open("log_file.csv")
+                task_log = csv.DictReader(open('log_file.csv'), delimiter="\t")
+                task_log = [task for task in task_log]
+
+                if decision.lower() == "a":
+                    Clean()
+                    search_date(task_log)
+                    Clean()
+                elif decision.lower() == "b":
+                    Clean()
+                    search_time(task_log)
+                    Clean()
+                elif decision.lower() == "c":
+                    Clean()
+                    search_string(task_log)
+                    Clean()
+                elif decision.lower() == "d":
+                    Clean()
+                    search_regex(task_log)
+                    Clean()
+                elif decision.lower() == "e":
+                    break
+                else:
+                    print("'{}' Invalid option! Try again".format(decision))
             else:
-                print("'{}' is an invalid option! Try again".format(decision))
+                Clean()
+                print("Please add first a task")
+                break
 
 
 class Clean:
 
     def __init__(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system("cls" if os.name == "nt" else "clear")
