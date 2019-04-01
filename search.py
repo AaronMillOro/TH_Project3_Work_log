@@ -20,25 +20,26 @@ def search_date(dict):
         if date_search == t_date_dict:
             i += 1
             subset.append(item)
-            print(i,")", t_date_dict, item.get("title"))
+            print(i, ")", t_date_dict, item.get("title"))
     if i == 0:
-        exit = input("No match found. Press any key to return")
+        exit = input("No match found.\nPress any key to return")
     else:
         while True:
             try:
                 view_info = abs(int(input("\nSelect a number:\n")))
                 zero_validation = 1 / view_info
                 # show task information
-                for key, value in subset[view_info-1].items():
-                    print(key,":",value)
+                for key, value in subset[view_info - 1].items():
+                    print(key, ":", value)
                 exit = input("\nPress anything to return. ")
                 break
             except ValueError:
                 print("Enter a number of task.")
             except IndexError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except ZeroDivisionError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
+
 
 def search_time(dict):
     while True:
@@ -61,94 +62,96 @@ def search_time(dict):
         if timing == time_dict:
             i += 1
             subset.append(item)
-            print(i,") Task: ", item.get("title"), "-" ,time_dict," minutes")
+            print(i, ") Task: ", item.get("title"), "-", time_dict, " minutes")
     if i == 0:
-        exit = input("No match found. Press any key to return")
+        exit = input("No match found.\nPress any key to return")
     else:
         while True:
             try:
                 view_info = abs(int(input("\nSelect a number:\n")))
                 zero_validation = 1 / view_info
-                # show task information
-                for key, value in subset[view_info-1].items():
-                    print(key,":",value)
+                for key, value in subset[view_info - 1].items():
+                    print(key, ":", value)
                 exit = input("\nPress anything to return. ")
                 break
             except ValueError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except IndexError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except ZeroDivisionError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
+
 
 def search_string(dict):
     while True:
         keyword = input("Keyword to search: ")
         if not keyword.strip():
-            print("Empty String! Add a keyword")
+            print("Empty field! Add a keyword")
         else:
             break
+    keyword = keyword.lower()
     i = 0
     subset = []
-    print("Tasks containing the keyword in notes or title:")
+    print("Tasks containing (part of) the keyword in notes or title:")
     for item in dict:
         notes_dict = item.get("notes")
         title_dict = item.get("title")
-        if keyword in notes_dict or keyword in title_dict:
+        if keyword in notes_dict.lower() or keyword in title_dict.lower():
             i += 1
             subset.append(item)
-            print(i,")", item.get("title"))
+            print(i, ")", item.get("title"))
     if i == 0:
-        exit = input("No match found. Press any key to return")
+        exit = input("No match found.\nPress any key to return")
     else:
         while True:
             try:
                 view_info = abs(int(input("\nSelect a number:\n")))
                 zero_validation = 1 / view_info
-                # show task information
-                for key, value in subset[view_info-1].items():
-                    print(key,":",value)
+                for key, value in subset[view_info - 1].items():
+                    print(key, ":", value)
                 exit = input("\nPress anything to return. ")
                 break
             except ValueError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except IndexError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except ZeroDivisionError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
+
 
 def search_regex(dict):
     while True:
-        re_pattern = input("Enter Regex pattern to match: ")
-        if not re_pattern.strip():
+        regex = input("Enter Regex pattern to match: ")
+        if not regex.strip():
             print("Empty field! Try again")
         else:
             break
+    # Compile string
+    match = re.compile(regex, re.I)
     i = 0
     subset = []
     print("Tasks containing the regex pattern in notes or title:")
     for item in dict:
         notes_dict = item.get("notes")
         title_dict = item.get("title")
-        if re_pattern in notes_dict or keyword in title_dict:
+        if match.search(notes_dict) or match.search(title_dict):
             i += 1
             subset.append(item)
-            print(i,")", item.get("title"))
+            print(i, ")", item.get("title"))
     if i == 0:
-        exit = input("No match found. Press any key to return")
+        exit = input("No match found.\nPress any key to return")
     else:
         while True:
             try:
                 view_info = abs(int(input("\nSelect a number:\n")))
                 zero_validation = 1 / view_info
-                # show task information
-                for key, value in subset[view_info-1].items():
-                    print(key,":",value)
+                for key, value in subset[view_info - 1].items():
+                    print(key, ":", value)
                 exit = input("\nPress anything to return. ")
                 break
             except ValueError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except IndexError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)
             except ZeroDivisionError:
-                print("Enter a number between 1-",i)
+                print("Enter a number between 1-", i)

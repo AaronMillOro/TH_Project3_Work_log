@@ -2,9 +2,7 @@ import csv
 import datetime
 import os
 
-
 from search import search_date, search_time, search_string, search_regex
-
 
 MENU_SEARCH = ("""
 *******   WORK LOG   *******\n
@@ -25,7 +23,7 @@ class MenuSearch:
             presence_log = os.path.isfile("log_file.csv")
             if presence_log == True:
                 Clean()
-                #Read file to iterate
+                # Read file to iterate
                 task_log = open("log_file.csv")
                 task_log = csv.DictReader(open('log_file.csv'), delimiter="\t")
                 task_log = [task for task in task_log]

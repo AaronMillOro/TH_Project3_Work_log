@@ -2,7 +2,6 @@ import csv
 import datetime
 import os
 
-
 from tools import Clean
 
 
@@ -45,7 +44,7 @@ class Task:
             except ZeroDivisionError:
                 print("Please enter a positive number")
         self.time_minutes = time_minutes
-        # input notes  freestyle
+        # input notes in freestyle
         Clean()
         notes = input("Notes (optional): ")
         self.notes = notes
@@ -56,16 +55,16 @@ class Task:
     def in_out_task(self):
         presence_file = os.path.isfile("log_file.csv")
         # if previous log_file is present read file to a list
-        if presence_file == True:
+        if presence_file:
             csv_file = open("log_file.csv")
             csv_file = csv.DictReader(open('log_file.csv'),
-            delimiter="\t")
+                                      delimiter="\t")
             tasks_info = [task for task in csv_file]
             tasks_info.append(self.__dict__)
             # store new information
             with open("log_file.csv", "w", encoding='utf8', newline='') as out:
                 w = csv.DictWriter(out, delimiter="\t",
-                    fieldnames=self.__dict__.keys())
+                                   fieldnames=self.__dict__.keys())
                 w.writeheader()
                 for task in tasks_info:
                     w.writerow(task)
@@ -73,6 +72,6 @@ class Task:
         else:
             with open("log_file.csv", "w", encoding='utf8') as out:
                 w = csv.DictWriter(out, delimiter="\t",
-                    fieldnames=self.__dict__.keys())
+                                   fieldnames=self.__dict__.keys())
                 w.writeheader()
                 w.writerow(self.__dict__)

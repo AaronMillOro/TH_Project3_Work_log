@@ -6,7 +6,6 @@ Project 3 - Work log
 from tools import Clean, MenuSearch
 from task import Task
 
-
 MAIN_MENU = ("""
 *******   WORK LOG   *******\n
 What would you like to do?\n
@@ -16,7 +15,6 @@ c) Quit program\n
 > """)
 
 
-# Main menu with options
 def main_menu():
     Clean()
     while True:
